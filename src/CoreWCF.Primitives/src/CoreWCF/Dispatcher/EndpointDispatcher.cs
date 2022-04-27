@@ -87,7 +87,7 @@ namespace CoreWCF.Dispatcher
 
         public ChannelDispatcher ChannelDispatcher { get; private set; }
 
-        internal MessageFilter ContractFilter
+        public MessageFilter ContractFilter
         {
             get { return _contractFilter; }
             set

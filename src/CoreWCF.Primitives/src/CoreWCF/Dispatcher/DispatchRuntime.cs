@@ -331,7 +331,7 @@ namespace CoreWCF.Dispatcher
             get { return _operations; }
         }
 
-        internal IDispatchOperationSelector OperationSelector
+        public IDispatchOperationSelector OperationSelector
         {
             get { return _operationSelector; }
             set

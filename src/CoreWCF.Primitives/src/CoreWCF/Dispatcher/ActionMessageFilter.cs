@@ -10,7 +10,7 @@ using CoreWCF.Channels;
 namespace CoreWCF.Dispatcher
 {
     [DataContract]
-    internal class ActionMessageFilter : MessageFilter
+    public class ActionMessageFilter : MessageFilter
     {
         private Dictionary<string, int> _actions;
         private ReadOnlyCollection<string> _actionSet;
