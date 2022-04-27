@@ -21,6 +21,7 @@ namespace CoreWCF.Channels
         {
             _serviceProvider = serviceProvider;
             _httpSettings = httpSettings;
+            State = CommunicationState.Created;
         }
 
         // TODO: Verify what happens on .NET Framework. Looking at code it looks like it doesn't set this value
@@ -28,7 +29,7 @@ namespace CoreWCF.Channels
 
         // TODO: Might want to do something a bit smarter with the state and actually have a concept of opening and closing to enable event handlers to be
         // connected and fire them when the service is shutting down.
-        public CommunicationState State => CommunicationState.Created;
+        public CommunicationState State { get; private set; }
 
         public IServiceChannelDispatcher ChannelDispatcher { get; set; }
 
@@ -61,11 +62,13 @@ namespace CoreWCF.Channels
 
         public Task OpenAsync()
         {
+            State = CommunicationState.Opened;
             return Task.CompletedTask;
         }
 
         public Task OpenAsync(CancellationToken token)
         {
+            State = CommunicationState.Opened;
             return Task.CompletedTask;
         }
 
