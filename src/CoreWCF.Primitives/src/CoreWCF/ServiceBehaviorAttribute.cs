@@ -39,7 +39,7 @@ namespace CoreWCF
         private InstanceContextMode _instanceMode;
         private object _wellKnownSingleton;  // if the user passes an object to the ServiceHost, it is stored here
         private object _hiddenSingleton;     // if the user passes a type to the ServiceHost, and instanceMode==Single, we store the instance here
-        private readonly bool _validateMustUnderstand = true;
+        private bool _validateMustUnderstand = true;
         private readonly bool _ignoreExtensionDataObject = DataContractSerializerDefaults.IgnoreExtensionDataObject;
         private readonly int _maxItemsInObjectGraph = DataContractSerializerDefaults.MaxItemsInObjectGraph;
         private readonly bool _automaticSessionShutdown = true;
@@ -126,6 +126,13 @@ namespace CoreWCF
 
                 _instanceMode = value;
             }
+        }
+
+        [DefaultValue(true)]
+        public bool ValidateMustUnderstand
+        {
+            get { return _validateMustUnderstand; }
+            set { _validateMustUnderstand = value; }
         }
 
         internal IServiceProvider ServicePovider
